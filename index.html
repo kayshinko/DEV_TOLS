@@ -3,28 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animasi Loading dengan Bootstrap</title>
+    <title>Halaman Utama yang Menarik</title>
     <!-- Link ke CSS Bootstrap -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Gaya untuk menempatkan spinner di tengah halaman */
-        .loading-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; /* Tinggi penuh viewport */
-            background-color: #f4f4f4; /* Warna latar belakang */
+        body {
+            background-color: #f8f9fa;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px 0;
+        }
+        .hero {
+            background: url('https://source.unsplash.com/1600x400/?nature,water') no-repeat center center;
+            background-size: cover;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .card {
+            margin: 20px 0;
+        }
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
 
-<div class="loading-container">
-    <!-- Spinner Bootstrap -->
-    <div class="spinner-border" role="status">
-        <span class="sr-only">Loading...</span>
+<header>
+    <div class="container">
+        <h1 class="text-center">Selamat Datang di Halaman Utama</h1>
+    </div>
+</header>
+
+<div class="hero">
+    <h2>Jelajahi Keindahan Alam</h2>
+    <p>Temukan keajaiban alam di sekitar Anda.</p>
+    <a href="#content" class="btn btn-light btn-lg">Mulai Sekarang</a>
+</div>
+
+<div class="container" id="content">
+    <h2 class="text-center my-4">Konten Menarik</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://source.unsplash.com/400x300/?forest" class="card-img-top" alt="Hutan">
+                <div class="card-body">
+                    <h5 class="card-title">Hutan</h5>
+                    <p class="card-text">Nikmati keindahan hutan yang rimbun dan segar.</p>
+                    <a href="#" class="btn btn-primary">Pelajari Lebih Lanjut</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://source.unsplash.com/400x300/?mountain" class="card-img-top" alt="Gunung">
+                <div class="card-body">
+                    <h5 class="card-title">Gunung</h5>
+                    <p class="card-text">Rasakan petualangan mendaki gunung yang menantang.</p>
+                    <a href="#" class="btn btn-primary">Pelajari Lebih Lanjut</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://source.unsplash.com/400x300/?ocean" class="card-img-top" alt="Laut">
+                <div class="card-body">
+                    <h5 class="card-title">Laut</h5>
+                    <p class="card-text">Jelajahi keindahan bawah laut yang menakjubkan.</p>
+                    <a href="#" class="btn btn-primary">Pelajari Lebih Lanjut</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<footer>
+    <p>&copy; 2024 Halaman Utama. Semua Hak Dilindungi.</p>
+</footer>
 
 <!-- Link ke JS Bootstrap dan jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
