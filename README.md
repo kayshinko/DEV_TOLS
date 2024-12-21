@@ -1,334 +1,275 @@
-# 🚀 SMILANS APP
-# Complete Web Developer Learning Path
+# 🌟 DigiPay - Platform PPOB Modern
 
 <div align="center">
 
-![Smilans App Banner](https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=800&size=50&pause=1000&color=FF2D20&center=true&vCenter=true&width=600&lines=SMILANS+APP;Web+Developer+Path)
+![DigiPay Logo](https://raw.githubusercontent.com/username/digipay/main/public/logo.png)
 
-[![Contact](https://img.shields.io/badge/Telegram-@XsSmilanSsX-blue?style=for-the-badge&logo=telegram)](https://t.me/XsSmilanSsX)
-[![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](#)
-[![Vue.js](https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vue.js&logoColor=4FC08D)](#)
-[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](#)
+[![Laravel](https://img.shields.io/badge/Laravel-v10.0-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
+[![Vue.js](https://img.shields.io/badge/Vue.js-v3.0-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white)](https://vuejs.org)
+[![MySQL](https://img.shields.io/badge/MySQL-v8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com)
+[![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)](LICENSE)
 
-<p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Roboto&weight=600&size=30&pause=1000&color=FF2D20&center=true&vCenter=true&random=false&width=600&lines=Full+Stack+Web+Development;From+Zero+to+Hero;With+Modern+Technologies" alt="Typing SVG" />
-</p>
+### 💫 Platform PPOB Modern untuk Semua Kebutuhan Digital
+*Solusi Pembayaran Digital Terlengkap*
+
+[Live Demo](https://demo.digipay.com) • [API Docs](https://api.digipay.com) • [Report Bug](https://github.com/username/digipay/issues)
 
 </div>
 
-## 🎯 Learning Flow
-
-```mermaid
-graph TD
-    A[Start] --> B{Choose Path}
-    B -->|Backend| C[Laravel]
-    B -->|Frontend| D[Vue/React]
-    C --> E[Database]
-    D --> F[UI/UX]
-    E --> G[API]
-    F --> G
-    G --> H[Full Stack]
-```
-
-## 💻 Learning Phases & Code Examples
-
-<details>
-<summary>📘 Phase 1: PHP Fundamentals</summary>
-
-### 1. Basic PHP Syntax
-```php
-// Variables & Data Types
-$name = "Smilans";
-$age = 25;
-$skills = ["PHP", "MySQL", "Laravel"];
-
-// Functions
-function calculateExperience($yearsOfCoding) {
-    return $yearsOfCoding * 2;
-}
-
-// Arrays & Loops
-foreach ($skills as $skill) {
-    echo "I know $skill\n";
-}
-
-// Object Oriented Programming
-class Developer {
-    private $name;
-    private $skills;
-
-    public function __construct($name, $skills) {
-        $this->name = $name;
-        $this->skills = $skills;
-    }
-
-    public function introduce() {
-        return "Hi, I'm {$this->name}";
-    }
-}
-```
-
-### 2. MySQL Basics
-```sql
--- Create a table
-CREATE TABLE users (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(255),
-    email VARCHAR(255) UNIQUE,
-    created_at TIMESTAMP
-);
-
--- Insert data
-INSERT INTO users (name, email) 
-VALUES ('Smilans', 'contact@smilans.com');
-
--- Join example
-SELECT users.name, posts.title 
-FROM users 
-JOIN posts ON users.id = posts.user_id;
-```
-</details>
-
-<details>
-<summary>📗 Phase 2: Laravel Framework</summary>
-
-### 1. Routes & Controllers
-```php
-// routes/web.php
-Route::get('/posts', [PostController::class, 'index']);
-Route::post('/posts', [PostController::class, 'store']);
-
-// PostController.php
-class PostController extends Controller {
-    public function index() {
-        $posts = Post::latest()->paginate(10);
-        return view('posts.index', compact('posts'));
-    }
-
-    public function store(Request $request) {
-        $validated = $request->validate([
-            'title' => 'required|max:255',
-            'content' => 'required'
-        ]);
-
-        Post::create($validated);
-        return redirect()->route('posts.index');
-    }
-}
-```
-
-### 2. Blade Templates
-```php
-<!-- layouts/app.blade.php -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>@yield('title') - Smilans App</title>
-</head>
-<body>
-    @include('partials.nav')
-    
-    <div class="container">
-        @yield('content')
-    </div>
-
-    @stack('scripts')
-</body>
-</html>
-
-<!-- posts/show.blade.php -->
-@extends('layouts.app')
-
-@section('content')
-    <div class="post">
-        <h1>{{ $post->title }}</h1>
-        <p>{{ $post->content }}</p>
-        
-        @foreach($post->comments as $comment)
-            <div class="comment">
-                {{ $comment->body }}
-            </div>
-        @endforeach
-    </div>
-@endsection
-```
-
-### 3. Eloquent Models & Relationships
-```php
-class User extends Model {
-    public function posts() {
-        return $this->hasMany(Post::class);
-    }
-
-    public function profile() {
-        return $this->hasOne(Profile::class);
-    }
-}
-
-class Post extends Model {
-    protected $fillable = ['title', 'content'];
-
-    public function user() {
-        return $this->belongsTo(User::class);
-    }
-
-    public function tags() {
-        return $this->belongsToMany(Tag::class);
-    }
-}
-```
-</details>
-
-<details>
-<summary>📕 Phase 3: Frontend Development</summary>
-
-### 1. Vue.js Components
-```vue
-<!-- PostList.vue -->
-<template>
-  <div class="posts">
-    <div v-for="post in posts" :key="post.id" class="post-card">
-      <h2>{{ post.title }}</h2>
-      <p>{{ post.excerpt }}</p>
-      <button @click="readMore(post.id)">Read More</button>
-    </div>
-  </div>
-</template>
-
-<script>
-export default {
-  data() {
-    return {
-      posts: []
-    }
-  },
-  async created() {
-    this.posts = await this.fetchPosts()
-  },
-  methods: {
-    async fetchPosts() {
-      const response = await axios.get('/api/posts')
-      return response.data
-    },
-    readMore(id) {
-      this.$router.push(`/posts/${id}`)
-    }
-  }
-}
-</script>
-```
-
-### 2. React Components
-```jsx
-// PostList.jsx
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-
-const PostList = () => {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchPosts();
-  }, []);
-
-  const fetchPosts = async () => {
-    try {
-      const response = await axios.get('/api/posts');
-      setPosts(response.data);
-    } catch (error) {
-      console.error('Error fetching posts:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  if (loading) return <div>Loading...</div>;
-
-  return (
-    <div className="grid grid-cols-3 gap-4">
-      {posts.map(post => (
-        <div key={post.id} className="card">
-          <h2>{post.title}</h2>
-          <p>{post.excerpt}</p>
-          <button onClick={() => navigate(`/posts/${post.id}`)}>
-            Read More
-          </button>
-        </div>
-      ))}
-    </div>
-  );
-};
-```
-</details>
-
-## 📱 Contact & Support
+## ⚡ Fitur Utama
 
 <div align="center">
 
-[![Telegram](https://img.shields.io/badge/Telegram-XsSmilanSsX-blue?style=for-the-badge&logo=telegram)](https://t.me/XsSmilanSsX)
-
-<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=24&pause=1000&color=00FF00&center=true&vCenter=true&random=false&width=500&lines=Need+Help?;Have+Questions?;Contact+us+on+Telegram!" alt="Contact Info" />
+🔒 **Secure Payment** | 📱 **Multi-Platform** | ⚡ **Real-time Transaction** | 💰 **Multi-Wallet**
 
 </div>
 
-## 🌟 Project Ideas
+### 🎯 Produk & Layanan
 
-```mermaid
-mindmap
-  root((Project Ideas))
-    [Beginner]
-      Todo App
-      Blog System
-      Portfolio Site
-    [Intermediate]
-      E-Commerce
-      CRM System
-      Booking Platform
-    [Advanced]
-      Social Network
-      Real-time Chat
-      Learning Platform
+- 📱 **Pulsa & Paket Data**
+  - All Operator
+  - Paket Internet
+  - Paket Telepon
+  
+- 💡 **Tagihan & Pembayaran**
+  - Listrik PLN
+  - PDAM
+  - BPJS
+  - PGN
+  
+- 📺 **TV Berlangganan**
+  - Indihome
+  - First Media
+  - MNC Vision
+  
+- 🎮 **Voucher Game**
+  - Mobile Legends
+  - PUBG Mobile
+  - Free Fire
+  - Genshin Impact
+
+### 💼 Fitur Bisnis
+
+- 👥 **Multi-level Marketing**
+  - Sistem Referral
+  - Komisi Berjenjang
+  - Tracking Downline
+  
+- 📊 **Laporan & Analitik**
+  - Laporan Transaksi
+  - Analisis Penjualan
+  - Performa Agen
+  
+- 💳 **Sistem Pembayaran**
+  - Virtual Account
+  - E-Wallet Integration
+  - Direct Transfer
+
+## 🛠️ Tech Stack
+
+### Frontend
+- Vue.js 3
+- Tailwind CSS
+- Vuex for State Management
+- Vue Router
+- Axios
+
+### Backend
+- Laravel 10
+- MySQL Database
+- Redis Cache
+- JWT Authentication
+
+### Payment Gateway Integration
+- Midtrans
+- Xendit
+- DOKU
+
+## ⚙️ Instalasi
+
+### Prerequisites
+
+```bash
+node >= 16.0.0
+php >= 8.1
+composer
+mysql >= 8.0
+redis
 ```
 
-## 💪 Daily Practice
+### 🚀 Langkah Instalasi
+
+1. **Clone Repository**
+```bash
+git clone https://github.com/username/digipay.git
+cd digipay
+```
+
+2. **Setup Backend**
+```bash
+# Install dependencies
+composer install
+
+# Setup environment
+cp .env.example .env
+php artisan key:generate
+
+# Migrate database
+php artisan migrate --seed
+
+# Install Passport
+php artisan passport:install
+```
+
+3. **Setup Frontend**
+```bash
+# Install dependencies
+npm install
+
+# Build assets
+npm run build
+```
+
+4. **Konfigurasi Environment**
+
+Sesuaikan file `.env`:
+```env
+APP_NAME=DigiPay
+APP_ENV=local
+APP_URL=http://localhost:8000
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=digipay
+DB_USERNAME=root
+DB_PASSWORD=
+
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+
+MIDTRANS_SERVER_KEY=your-server-key
+MIDTRANS_CLIENT_KEY=your-client-key
+MIDTRANS_MERCHANT_ID=your-merchant-id
+
+XENDIT_SECRET_KEY=your-secret-key
+XENDIT_PUBLIC_KEY=your-public-key
+```
+
+5. **Jalankan Aplikasi**
+```bash
+# Terminal 1: Laravel Server
+php artisan serve
+
+# Terminal 2: Vite Dev Server
+npm run dev
+```
+
+## 📱 Screenshot Aplikasi
 
 <div align="center">
 
-| Time | Activity |
-|------|----------|
-| 🌅 Morning | Code Review & Planning |
-| 💻 Afternoon | Active Coding & Learning |
-| 🌙 Evening | Project Work & Practice |
+| Dashboard Admin | Transaksi |
+|----------------|-----------|
+| ![Dashboard](screenshots/dashboard.png) | ![Transactions](screenshots/transactions.png) |
+
+| Mobile View | Report Analytics |
+|-------------|-----------------|
+| ![Mobile](screenshots/mobile.png) | ![Analytics](screenshots/analytics.png) |
 
 </div>
 
-## 📊 Learning Progress
+## 📚 API Documentation
 
-```mermaid
-gantt
-    title 6-Month Learning Plan
-    dateFormat  YYYY-MM-DD
-    section Backend
-    PHP & MySQL    :a1, 2024-01-01, 30d
-    Laravel Basics :a2, after a1, 45d
-    section Frontend
-    HTML & CSS     :b1, 2024-01-01, 30d
-    JavaScript     :b2, after b1, 30d
-    Vue.js/React   :b3, after b2, 45d
-    section Advanced
-    API Development:c1, after a2, 30d
-    Full Stack App :c2, after c1, 45d
+API documentation tersedia di `/api/documentation`. Generate dengan:
+
+```bash
+php artisan l5-swagger:generate
 ```
+
+## 🔒 Security Features
+
+- 🔐 2FA Authentication
+- 🛡️ Anti-Fraud System
+- 📝 Transaction Logging
+- 🔍 IP Whitelisting
+- 🔒 End-to-end Encryption
+
+## 🚀 Production Deployment
+
+1. **Optimize Laravel**
+```bash
+composer install --optimize-autoloader --no-dev
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+```
+
+2. **Build Frontend**
+```bash
+npm run build
+```
+
+3. **Setup Supervisor**
+```bash
+[program:digipay-worker]
+process_name=%(program_name)s_%(process_num)02d
+command=php /path/to/project/artisan queue:work
+autostart=true
+autorestart=true
+user=www-data
+numprocs=8
+redirect_stderr=true
+stdout_logfile=/path/to/project/worker.log
+```
+
+## 📈 Roadmap
+
+- [x] Multi-payment Gateway
+- [x] Sistem Referral
+- [x] Real-time Notification
+- [ ] Mobile App Integration
+- [ ] Cryptocurrency Payment
+- [ ] International Remittance
+
+## 👥 Tim Pengembang
+
+- **Project Manager** - [SmilanS](https://github.com/pmname)
+- **Backend Developer** - [SmilanS](https://github.com/backenddev)
+- **Frontend Developer** - [SmilanS](https://github.com/frontenddev)
+- **UI/UX Designer** - [SmilanS](https://github.com/designer)
+
+## 🤝 Contributing
+
+Kontribusi selalu diterima!
+
+1. Fork project ini
+2. Buat feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit perubahan (`git commit -m 'Add Amazing Feature'`)
+4. Push ke branch (`git push origin feature/AmazingFeature`)
+5. Buka Pull Request
+
+## 📝 License
+
+Project ini dilisensikan di bawah MIT License - lihat file [LICENSE](LICENSE) untuk detail.
 
 ---
 
 <div align="center">
 
-### 🏆 Created with ❤️ by SMILANS APP
+### ⭐ Beri bintang jika project ini membantu!
 
-<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=12&pause=1000&color=FF2D20&center=true&vCenter=true&random=false&width=500&lines=Building+the+future+of+web+development;One+line+of+code+at+a+time" alt="Slogan" />
+[Report Bug](https://github.com/username/digipay/issues) • [Request Feature](https://github.com/username/digipay/issues)
 
-[![Profile Views](https://komarev.com/ghpvc/?username=smilans-app&color=red&style=flat)](#)
+</div>
 
+## 📊 Project Status
+
+![Alt](https://repobeats.axiom.co/api/embed/your-repository-id.svg "Repobeats analytics image")
+
+---
+
+<div align="center">
+Made with ❤️ by SmilanS Team
 </div>
