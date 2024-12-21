@@ -101,7 +101,7 @@ redis
 
 1. **Clone Repository**
 ```bash
-git clone https://github.com/username/digipay.git
+git clone https://github.com/kayshinko/DEV_TOLS.git
 cd digipay
 ```
 
@@ -235,10 +235,10 @@ stdout_logfile=/path/to/project/worker.log
 
 ## 👥 Tim Pengembang
 
-- **Project Manager** - [SmilanS](https://github.com/pmname)
-- **Backend Developer** - [SmilanS](https://github.com/backenddev)
-- **Frontend Developer** - [SmilanS](https://github.com/frontenddev)
-- **UI/UX Designer** - [SmilanS](https://github.com/designer)
+- **Project Manager** - [SmilanS](https://github.com/kayshinko)
+- **Backend Developer** - [SmilanS](https://github.com/kayshinko)
+- **Frontend Developer** - [SmilanS](https://github.com/kayshinko)
+- **UI/UX Designer** - [SmilanS](https://github.com/kayshinko)
 
 ## 🤝 Contributing
 
