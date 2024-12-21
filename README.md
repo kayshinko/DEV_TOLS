@@ -1,4 +1,4 @@
-# 🌟 DigiPay - Platform PPOB Modern
+# 🌟 DigiPay - Open Source PPOB Platform
 
 <div align="center">
 
@@ -9,10 +9,10 @@
 [![MySQL](https://img.shields.io/badge/MySQL-v8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)](LICENSE)
 
-### 💫 Platform PPOB Modern untuk Semua Kebutuhan Digital
-*Solusi Pembayaran Digital Terlengkap*
+### 💫 Platform PPOB Open Source dengan Integrasi Multi Provider
+*Solusi Pembayaran Digital Terbuka untuk Semua*
 
-[Live Demo](https://demo.digipay.com) • [API Docs](https://api.digipay.com) • [Report Bug](https://github.com/username/digipay/issues)
+[Demo](https://demo.digipay.com) • [Documentation](https://docs.digipay.com) • [Community](https://github.com/kayshinko/DEV_TOLS/discussions)
 
 </div>
 
@@ -20,75 +20,83 @@
 
 <div align="center">
 
-🔒 **Secure Payment** | 📱 **Multi-Platform** | ⚡ **Real-time Transaction** | 💰 **Multi-Wallet**
+🔒 **Multi Provider** | 📱 **Multi Gateway** | ⚡ **Open Source** | 💰 **Scalable**
 
 </div>
 
-### 🎯 Produk & Layanan
+### 🎯 Produk Digital (Digiflazz)
 
-- 📱 **Pulsa & Paket Data**
-  - All Operator
-  - Paket Internet
-  - Paket Telepon
+- 📱 **Pulsa & Data**
+  - All Operator (Telkomsel, XL, Indosat, dll)
+  - Paket Data Internet
+  - Paket Telepon & SMS
   
-- 💡 **Tagihan & Pembayaran**
-  - Listrik PLN
+- 💡 **Pembayaran Tagihan**
+  - Token PLN & Tagihan Listrik
   - PDAM
-  - BPJS
-  - PGN
+  - BPJS Kesehatan
+  - Internet & TV Kabel
   
-- 📺 **TV Berlangganan**
-  - Indihome
-  - First Media
-  - MNC Vision
-  
-- 🎮 **Voucher Game**
+- 🎮 **Voucher Digital**
   - Mobile Legends
   - PUBG Mobile
   - Free Fire
-  - Genshin Impact
+  - Steam Wallet
+  - Google Play
+  - Apple iTunes
 
-### 💼 Fitur Bisnis
+### 💳 Payment Gateway Integration
 
-- 👥 **Multi-level Marketing**
-  - Sistem Referral
-  - Komisi Berjenjang
-  - Tracking Downline
-  
-- 📊 **Laporan & Analitik**
-  - Laporan Transaksi
-  - Analisis Penjualan
-  - Performa Agen
-  
-- 💳 **Sistem Pembayaran**
+- 🏧 **Tripay**
   - Virtual Account
-  - E-Wallet Integration
-  - Direct Transfer
+  - QRIS
+  - E-Wallet
+  - Retail Outlet
+  
+- 💸 **Xendit**
+  - Virtual Account
+  - Credit Card
+  - E-Wallet
+  - Direct Debit
+  
+- 💰 **Midtrans**
+  - Bank Transfer
+  - Credit Card
+  - E-Wallet
+  - Convenience Store
 
-## 🛠️ Tech Stack
+## 🛠️ Tech Stack & Integration
 
-### Frontend
+### Core Technology
+- Laravel 10.x
 - Vue.js 3
 - Tailwind CSS
-- Vuex for State Management
-- Vue Router
-- Axios
+- MySQL
+- Redis
 
-### Backend
-- Laravel 10
-- MySQL Database
-- Redis Cache
-- JWT Authentication
+### Provider Integration
+```php
+// Digiflazz Configuration
+DIGIFLAZZ_USERNAME=username
+DIGIFLAZZ_API_KEY=api-key
+DIGIFLAZZ_URL=https://api.digiflazz.com/v1
 
-### Payment Gateway Integration
-- Midtrans
-- Xendit
-- DOKU
+// Payment Gateway Keys
+TRIPAY_API_KEY=your-api-key
+TRIPAY_PRIVATE_KEY=your-private-key
+TRIPAY_MERCHANT_CODE=your-merchant-code
+
+XENDIT_SECRET_KEY=your-secret-key
+XENDIT_PUBLIC_KEY=your-public-key
+
+MIDTRANS_SERVER_KEY=your-server-key
+MIDTRANS_CLIENT_KEY=your-client-key
+MIDTRANS_MERCHANT_ID=your-merchant-id
+```
 
 ## ⚙️ Instalasi
 
 ### Prerequisites
-
 ```bash
 node >= 16.0.0
 php >= 8.1
@@ -97,7 +105,7 @@ mysql >= 8.0
 redis
 ```
 
-### 🚀 Langkah Instalasi
+### 🚀 Quick Start
 
 1. **Clone Repository**
 ```bash
@@ -107,37 +115,28 @@ cd digipay
 
 2. **Setup Backend**
 ```bash
-# Install dependencies
 composer install
-
-# Setup environment
 cp .env.example .env
 php artisan key:generate
-
-# Migrate database
 php artisan migrate --seed
-
-# Install Passport
-php artisan passport:install
 ```
 
 3. **Setup Frontend**
 ```bash
-# Install dependencies
 npm install
-
-# Build assets
 npm run build
 ```
 
-4. **Konfigurasi Environment**
+4. **Provider Configuration**
 
-Sesuaikan file `.env`:
+Edit `.env` dan sesuaikan kredensial provider:
 ```env
+# Core Application
 APP_NAME=DigiPay
 APP_ENV=local
 APP_URL=http://localhost:8000
 
+# Database
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
@@ -145,114 +144,122 @@ DB_DATABASE=digipay
 DB_USERNAME=root
 DB_PASSWORD=
 
+# Redis Cache
 REDIS_HOST=127.0.0.1
 REDIS_PASSWORD=null
 REDIS_PORT=6379
 
-MIDTRANS_SERVER_KEY=your-server-key
-MIDTRANS_CLIENT_KEY=your-client-key
-MIDTRANS_MERCHANT_ID=your-merchant-id
+# Digiflazz
+DIGIFLAZZ_USERNAME=
+DIGIFLAZZ_API_KEY=
+DIGIFLAZZ_URL=
 
-XENDIT_SECRET_KEY=your-secret-key
-XENDIT_PUBLIC_KEY=your-public-key
+# Tripay
+TRIPAY_API_KEY=
+TRIPAY_PRIVATE_KEY=
+TRIPAY_MERCHANT_CODE=
+
+# Xendit
+XENDIT_SECRET_KEY=
+XENDIT_PUBLIC_KEY=
+
+# Midtrans
+MIDTRANS_SERVER_KEY=
+MIDTRANS_CLIENT_KEY=
+MIDTRANS_MERCHANT_ID=
 ```
 
-5. **Jalankan Aplikasi**
-```bash
-# Terminal 1: Laravel Server
-php artisan serve
+## 📚 API Integration
 
-# Terminal 2: Vite Dev Server
-npm run dev
+### Digiflazz Integration
+```php
+// Check Balance
+$response = Http::post('https://api.digiflazz.com/v1/cek-saldo', [
+    'cmd' => 'deposit',
+    'username' => env('DIGIFLAZZ_USERNAME'),
+    'sign' => md5(env('DIGIFLAZZ_USERNAME') . env('DIGIFLAZZ_API_KEY') . 'depo')
+]);
+
+// Price List
+$response = Http::post('https://api.digiflazz.com/v1/price-list', [
+    'cmd' => 'prepaid',
+    'username' => env('DIGIFLAZZ_USERNAME'),
+    'sign' => md5(env('DIGIFLAZZ_USERNAME') . env('DIGIFLAZZ_API_KEY') . 'pricelist')
+]);
 ```
 
-## 📱 Screenshot Aplikasi
+### Payment Gateway Integration
 
-<div align="center">
+```php
+// Tripay Payment
+$payload = [
+    'method'            => 'BRIVA',
+    'merchant_ref'      => $order_id,
+    'amount'            => $amount,
+    'customer_name'     => $customer_name,
+    'customer_email'    => $customer_email,
+    'customer_phone'    => $customer_phone,
+    'order_items'       => $items,
+    'expired_time'      => (time() + (24 * 60 * 60)), // 24 jam
+    'signature'         => hash_hmac('sha256', $merchant_code.$order_id.$amount, $private_key)
+];
 
-| Dashboard Admin | Transaksi |
-|----------------|-----------|
-| ![Dashboard](screenshots/dashboard.png) | ![Transactions](screenshots/transactions.png) |
+// Xendit Payment
+\Xendit\Xendit::setApiKey(env('XENDIT_SECRET_KEY'));
+$params = [ 
+    'external_id' => $order_id,
+    'amount' => $amount,
+    'bank_code' => 'BRI',
+    'name' => $customer_name,
+    'is_closed' => true,
+    'expiration_date' => date('Y-m-d H:i:s', strtotime('+1 day'))
+];
 
-| Mobile View | Report Analytics |
-|-------------|-----------------|
-| ![Mobile](screenshots/mobile.png) | ![Analytics](screenshots/analytics.png) |
-
-</div>
-
-## 📚 API Documentation
-
-API documentation tersedia di `/api/documentation`. Generate dengan:
-
-```bash
-php artisan l5-swagger:generate
+// Midtrans Payment
+\Midtrans\Config::$serverKey = env('MIDTRANS_SERVER_KEY');
+\Midtrans\Config::$isProduction = false;
+\Midtrans\Config::$isSanitized = true;
+\Midtrans\Config::$is3ds = true;
 ```
 
 ## 🔒 Security Features
 
-- 🔐 2FA Authentication
-- 🛡️ Anti-Fraud System
+- 🔐 Provider API Signature
+- 🛡️ Payment Gateway Encryption
 - 📝 Transaction Logging
 - 🔍 IP Whitelisting
-- 🔒 End-to-end Encryption
-
-## 🚀 Production Deployment
-
-1. **Optimize Laravel**
-```bash
-composer install --optimize-autoloader --no-dev
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
-```
-
-2. **Build Frontend**
-```bash
-npm run build
-```
-
-3. **Setup Supervisor**
-```bash
-[program:digipay-worker]
-process_name=%(program_name)s_%(process_num)02d
-command=php /path/to/project/artisan queue:work
-autostart=true
-autorestart=true
-user=www-data
-numprocs=8
-redirect_stderr=true
-stdout_logfile=/path/to/project/worker.log
-```
+- 🔒 Rate Limiting
 
 ## 📈 Roadmap
 
-- [x] Multi-payment Gateway
-- [x] Sistem Referral
-- [x] Real-time Notification
-- [ ] Mobile App Integration
-- [ ] Cryptocurrency Payment
-- [ ] International Remittance
+- [x] Digiflazz Integration
+- [x] Multi Payment Gateway
+- [x] Transaction Logging
+- [ ] Webhook Handler
+- [ ] Mobile App
+- [ ] API Documentation
+- [ ] Multi Provider Support
 
 ## 👥 Tim Pengembang
 
-- **Project Manager** - [SmilanS](https://github.com/kayshinko)
+- **Project Lead** - [SmilanS](https://github.com/kayshinko)
 - **Backend Developer** - [SmilanS](https://github.com/kayshinko)
 - **Frontend Developer** - [SmilanS](https://github.com/kayshinko)
 - **UI/UX Designer** - [SmilanS](https://github.com/kayshinko)
 
 ## 🤝 Contributing
 
-Kontribusi selalu diterima!
+Kami menerima kontribusi dari komunitas! Silakan:
 
-1. Fork project ini
-2. Buat feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit perubahan (`git commit -m 'Add Amazing Feature'`)
-4. Push ke branch (`git push origin feature/AmazingFeature`)
-5. Buka Pull Request
+1. Fork repository
+2. Buat feature branch
+3. Commit perubahan
+4. Push ke branch
+5. Submit pull request
 
 ## 📝 License
 
-Project ini dilisensikan di bawah MIT License - lihat file [LICENSE](LICENSE) untuk detail.
+Project ini dilisensikan di bawah MIT License. Lihat [LICENSE](LICENSE) untuk detail.
 
 ---
 
@@ -260,16 +267,8 @@ Project ini dilisensikan di bawah MIT License - lihat file [LICENSE](LICENSE) un
 
 ### ⭐ Beri bintang jika project ini membantu!
 
-[Report Bug](https://github.com/username/digipay/issues) • [Request Feature](https://github.com/username/digipay/issues)
+[Report Bug](https://github.com/kayshinko/DEV_TOLS/issues) • [Request Feature](https://github.com/kayshinko/DEV_TOLS/issues)
 
-</div>
-
-## 📊 Project Status
-
-![Alt](https://repobeats.axiom.co/api/embed/your-repository-id.svg "Repobeats analytics image")
-
----
-
-<div align="center">
 Made with ❤️ by SmilanS Team
+
 </div>
