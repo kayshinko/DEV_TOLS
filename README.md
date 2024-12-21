@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![DigiPay Logo](https://raw.githubusercontent.com/username/digipay/main/public/logo.png)
+![DigiPay Logo](https://avatars.githubusercontent.com/u/166167053?v=4&size=64)
 
 [![Laravel](https://img.shields.io/badge/Laravel-v10.0-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
 [![Vue.js](https://img.shields.io/badge/Vue.js-v3.0-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white)](https://vuejs.org)
